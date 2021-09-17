@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		KNN近邻算法 | 
+	 
+	Paul.ll
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/github.io/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "wujun234.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/github.io/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/github.io/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/github.io/" class="logo">Paul.ll</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00DateManage(时间管理)
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/github.io/2018/07/13/00DateManage(%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86)/OKR%E5%B7%A5%E4%BD%9C%E6%B3%95/">
+										OKR工作法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02MachineLearning(机器学习)
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-01KNN%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/">
+										【机器学习实战】-01KNN近邻算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-02%E5%86%B3%E7%AD%96%E6%A0%91ID3/">
+										【机器学习实战】-02决策树ID3
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05Version(版本管理)
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/github.io/2016/03/20/05Version(%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86)/GitABC/">
+										GitABC
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06ReadWrite(读书写作)
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/github.io/2018/01/10/06ReadWrite(%E8%AF%BB%E4%B9%A6%E5%86%99%E4%BD%9C)/20180110Markdown%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%85%A5%E9%97%A8/">
+										20180110Markdown介绍及入门
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	【机器学习实战】-01KNN近邻算法
+</h1>
+<div class="article-meta">
+	
+	<span>Paul.ll</span>
+	<span>2018-07-13 18:36:02</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true">
+                        <a href="/categories/02MachineLearning-机器学习/">02MachineLearning(机器学习)</a>
+                        </i>
+                      
+                    </span>
+                
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<p>【博客的主要内容主要是自己的学习笔记，并结合个人的理解，供各位在学习过程中参考，若有疑问，欢迎提出；若有侵权，请告知博主删除，原创文章转载还请注明出处。】</p>
+<p>#1.什么是kNN#<br>k-近邻算法（kNN k-NearestNeighbor）采用测量不同特征值之间的距离方法进行分类。在确定分类决策上仅依据最邻近的一个或多个样本的类别来决定待分样本所属类别。</p>
+<p>#2.用途#<br>kNN算法主要被用于文本分类、相似推荐.</p>
+<p>#3. kNN工作原理#<br>存在一个样本数据集合（即训练样本集），并且样本集中每个数据都存在标签（即每个数据与所属分类的对应关系）。输入没有标签的新数据之后，将新数据的每个特征与样本集中数据对应的特征进行比较，算法将提取出样本集中特征最相似数据（最近邻）的分类标签。</p>
+<p>一般选择样本数据集中前K个最相似的数据，k一般不大于20的整数。</p>
+<p><img src="http://i.imgur.com/mQ5PbNb.png"></p>
+<p>说明：图中绿色圆点表示新数据，蓝色正方形和红色三角形表示已分类的样本集。<br>如果K=3，由于红色三角形所占比例为2/3，绿色圆点则属于“红色三角形”分类；<br>如果K=5，由于蓝色正方形所占比例为3/5，绿色圆点则属于“蓝色正方形”分类。</p>
+<p>#4. kNN算法流程#<br>使用K-近邻算法将每组数据划分到某个类中：<br>     1）计算已知类别数据集中的点与当前点之间的距离；<br>            <img src="http://i.imgur.com/Fy5x30m.png"><br>     2）按照距离递增次序排序；<br>     3）选取与当前点距离最小的K个点；<br>     4）确定前K个点所在类别的出现频率；<br>     5）返回前K个点出现频率最高的类别作为当前点的预测分类。</p>
+<p>#5. kNN算法Code#<br><strong>1.Python算法实现</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">from numpy import *</span><br><span class="line">import  operator</span><br><span class="line">from os import listdir</span><br><span class="line"></span><br><span class="line">def classify0(inX, dataSet, labels,k):        </span><br><span class="line">    #0、获取数据Count</span><br><span class="line">    dataSetSize = dataSet.shape[0]</span><br><span class="line">    </span><br><span class="line">    #1、计算距离</span><br><span class="line">    diffMat = tile(inX,(dataSetSize,1)) - dataSet</span><br><span class="line">    sqDiffMat = diffMat ** 2</span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=1)</span><br><span class="line">    distances = sqDistances ** 0.5</span><br><span class="line">    </span><br><span class="line">    #2、选择最小距离的k个点</span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    </span><br><span class="line">    #3、确定前K个点所在类别的出现频率</span><br><span class="line">    classCount=&#123;&#125;</span><br><span class="line">    for i in range(k):</span><br><span class="line">        voteIlabel = labels[sortedDistIndicies[i]]</span><br><span class="line">        classCount[voteIlabel] = classCount.get(voteIlabel,0) + 1</span><br><span class="line">    </span><br><span class="line">    #4、返回前K个点出现频率最高的类别作为当前点的预测分类</span><br><span class="line">    sortedClassCount = sorted(classCount.iteritems(),key=operator.itemgetter(1),reverse=True)</span><br><span class="line">    </span><br><span class="line">    return sortedClassCount[0][0]  </span><br></pre></td></tr></table></figure>
+
+<p><strong>2、kNN算法测试</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def createDataSet():</span><br><span class="line">	group = array([[1.0,1.1],[1.0,1.0],[0,0],[0,0.1]])</span><br><span class="line">	labels = [&#x27;A&#x27;,&#x27;A&#x27;,&#x27;B&#x27;,&#x27;B&#x27;]</span><br><span class="line">	return group,labels</span><br></pre></td></tr></table></figure>
+
+<p>#6. kNN算法特点#<br><strong>优点</strong><br>    1、简单，易于理解，易于实现，无需估计参数，无需训练；<br>    2、适合对稀有事件进行分类；<br>    3、适用于多分类问题。<br><strong>缺点</strong><br>    1、计算复杂度高、空间复杂度高；<br>     2、可理解性差，无法给出像决策树类的规则。</p>
+<p>#7. kNN示例分析#<br>##7.1 示例1：使用k-近邻算法改进约会网站的配对效果##<br><strong>1.背景</strong><br>海伦通过在线约会网寻找自己合适的约会对象。根据自己一番总结将约会对象分为三类：<br>    1、不喜欢的人；<br>    2、魅力一般的人；<br>    3、极具魅力的人.</p>
+<p>海伦收集网站中每位约会对象的以下数据来划分其约会类型：<br>    1、每年获得的飞行公里数；<br>    2、玩视频游戏所耗时间百分比；<br>    3、每周消费的冰淇淋公升数.</p>
+<p>编写个小程序，海伦输入会员特征值程序显示该会员所属分类。</p>
+<p><strong>2. 分析</strong><br>        1）收集数据：提供文本文件<br>         2）准备数据：使用Python解析文本文件<br>     3）分析数据：使用Matplotlib画二维扩散图<br>         4）训练数据：不适合kNN<br>         5）测试数据：使用海伦提供的部分数据作为测试样本<br>         6）使用算法：产生简单的命令行程序，然后海伦可以输入一些特征数据以判断是否为自己喜欢的类型。</p>
+<p><strong>3. Code</strong><br>    使用Python解析文本文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">def file2matrix(filename):</span><br><span class="line">     fr = open(filename)</span><br><span class="line">     numberOfLines = len(fr.readlines())</span><br><span class="line">	     </span><br><span class="line">     #初始化矩阵</span><br><span class="line">     returnMat = zeros((numberOfLines,3))</span><br><span class="line">     </span><br><span class="line">     #初始化标签矩阵</span><br><span class="line">     classLabelVector = []</span><br><span class="line">     </span><br><span class="line">     fr = open(filename)</span><br><span class="line">     index = 0</span><br><span class="line">     </span><br><span class="line">     for line in fr.readlines():</span><br><span class="line">         line = line.strip()</span><br><span class="line">         listFromLine = line.split(&#x27;\t&#x27;)</span><br><span class="line">         returnMat[index,:] = listFromLine[0:3]</span><br><span class="line">         classLabelVector.append(int(listFromLine[-1]))</span><br><span class="line">         index += 1</span><br><span class="line">    return returnMat,classLabelVector</span><br></pre></td></tr></table></figure>
+<p><strong>4. 使用Matplotlib画二维扩散图</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#读取样本数据   </span><br><span class="line">datingDataMat,datingLabels = file2matrix(&#x27;H:\workspacePy\machinelearninginaction\Ch02\datingTestSet2.txt&#x27;)</span><br><span class="line">	 		</span><br><span class="line">#散点图显示样本数据</span><br><span class="line">import matplotlib</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import matplotlib.font_manager </span><br><span class="line">	 		</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(111)</span><br><span class="line">	 		</span><br><span class="line">##1、散点图显示“玩视频游戏所耗时间百分比”、“每周消费的冰淇淋公升数”</span><br><span class="line">ax.scatter(datingDataMat[:,1], datingDataMat[:,2], 15.0*array(datingLabels),15.0*array(datingLabels))</span><br><span class="line">plt.show()</span><br><span class="line">	 		</span><br><span class="line">##2、散点图显示“每年获得的飞行常客里程数”、“玩视频游戏所耗时间百分比”</span><br><span class="line">ax.scatter(datingDataMat[:,0],datingDataMat[:,1],15.0*array(datingLabels),15.0*array(datingLabels))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://i.imgur.com/bJHYngU.png"></p>
+<p><strong>5.归一化特征值</strong></p>
+<p>特征值数值间相差较大，在计算距离时易产生较大偏差。例如：<br>        <img src="http://i.imgur.com/dljLODL.png"><br>”每年获得飞行常客里程数”远大于“玩视频游戏所耗时间百分比”和“每周消费冰淇淋公升数”，仅仅因为“每年获得飞行常客里程数”远大于其它2个特征值，计算距离结果将放大。我们将“每年获得飞行常客里程数”特征换算为“0到1”或“-1到1”之间，称为<strong>“归一化特征值”</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def autoNorm(dataSet):</span><br><span class="line">    minVals = dataSet.min(0)</span><br><span class="line">    maxVals = dataSet.max(0)</span><br><span class="line">    ranges = maxVals - minVals</span><br><span class="line">    normDataSet = zeros(shape(dataSet))</span><br><span class="line">    m = dataSet.shape[0]</span><br><span class="line">    normDataSet = dataSet - tile(minVals,(m,1))</span><br><span class="line">    normDataSet = normDataSet/tile(ranges,(m,1))</span><br><span class="line">    return normDataSet,ranges,minVals</span><br></pre></td></tr></table></figure>
+
+<p> <strong>6.测试算法</strong></p>
+<p>机器学习算法很大重要工作就是评估算法的正确率，通常将提供已有数据的90%作为训练样本来训练分类器，而使用其余的10%数据去测试分类器，检查分类器的正确率。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def datingClassTest():</span><br><span class="line"> 	hoRatio = 0.10</span><br><span class="line">	datingDataMat,datingLabels = file2matrix(&#x27;datingTestSet.txt&#x27;)</span><br><span class="line"> 	normDataSet,ranges,minVals = autoNorm(datingDataMat)</span><br><span class="line">    m = normDataSet.shape[0]</span><br><span class="line">    numTestVecs = int(m * hoRatio)</span><br><span class="line">    errorCount = 0.0    </span><br><span class="line">    for i in range(numTestVecs):</span><br><span class="line">        classifierResult = classify0(normDataSet[i,:],normDataSet[numTestVecs:m,:],datingLabels[numTestVecs:m],3)</span><br><span class="line">        print &quot;the classifier came back with:%d, the real answer is: %d&quot; % (classifierResult,datingLabels[i])</span><br><span class="line">        if(classifierResult != datingLabels[i]):</span><br><span class="line">            errorCount += 1.0</span><br><span class="line"> 	    print &quot;the total error rate is : %f&quot; % (errorCount/float(numTestVecs))</span><br></pre></td></tr></table></figure>
+<p>##7.2 示例2：手写识别系统##<br><strong>1. 背景</strong><br>        数字0<del>9，通过32*32位图来展现。现有1900个位图数据，分别表示了0</del>9数字内容。需通过kNN方法能快速分辨出位图的数字。<br><strong>2.分析</strong><br>        1）收集数据：提供文本文件；<br>        2）准备数据：将图像格式转换为分类器使用的list格式；<br>        3）分析数据：在Python命令提示符中检查数据，确保它符合要求；<br>        4）训练算法：不适合kNN算法；<br>        5）测试数据：编写函数使用提供的部分数据集作为测试样本，测试样本与非测试样本的区别在于测试样本是已经完成分类的数据，如果预测分类与实际类别不同，则标记为一个错误。<br>        6）使用算法：省略</p>
+<p><strong>3.Code</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#将32**32位图片数据转换为1*1024的list</span><br><span class="line">def img2vector(filename):</span><br><span class="line">    returnVect = zeros((1,1024))</span><br><span class="line">    fr = open(filename)</span><br><span class="line">    for i in range(32):</span><br><span class="line">        lineStr = fr.readline()</span><br><span class="line">        for j in range(32):</span><br><span class="line">            returnVect[0,32*i+j] = int(lineStr[j])</span><br><span class="line">    return returnVect</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.测试算法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#测试算法</span><br><span class="line">def handwritingClassTest():</span><br><span class="line">    #1、获取样本数据集合，</span><br><span class="line">    hwLabels = []</span><br><span class="line">    path = &#x27;H:\\workspacePy\\machinelearninginaction\\Ch02\\digits\\trainingDigits&#x27;</span><br><span class="line">    trainingFileList = listdir(path)</span><br><span class="line">    m = len(trainingFileList)</span><br><span class="line">    trainingMat = zeros((m,1024))</span><br><span class="line">    </span><br><span class="line">    #2、将样本数据并转换为list</span><br><span class="line">    for i in range(m):</span><br><span class="line">        fileNameStr = trainingFileList[i]</span><br><span class="line">        fileStr = fileNameStr.split(&#x27;.&#x27;)[0]</span><br><span class="line">        classNumStr = int(fileStr.split(&#x27;_&#x27;)[0])</span><br><span class="line">        hwLabels.append(classNumStr)</span><br><span class="line">        </span><br><span class="line">        trainingMat[i,:] = img2vector(path + &#x27;/%s&#x27; % fileNameStr)</span><br><span class="line">                </span><br><span class="line">    #3、使用测试样本进行测试对比。</span><br><span class="line">    path1 = &#x27;H:\\workspacePy\\machinelearninginaction\\Ch02\\digits\\testDigits&#x27;</span><br><span class="line">    testFileList = listdir(path1)</span><br><span class="line">    errorCount = 0.0</span><br><span class="line">    mTest = len(testFileList)</span><br><span class="line">    for i in range(mTest):</span><br><span class="line">        fileNameStr = testFileList[i]</span><br><span class="line">        fileStr = fileNameStr.split(&#x27;.&#x27;)[0]</span><br><span class="line">        classNumStr = int(fileStr.split(&#x27;_&#x27;)[0])</span><br><span class="line">        </span><br><span class="line">        vectorUnderTest = img2vector(path1 + &#x27;/%s&#x27; % fileNameStr)</span><br><span class="line">        </span><br><span class="line">        ##knn</span><br><span class="line">        classifierResult = classify0(vectorUnderTest,trainingMat,hwLabels,3)</span><br><span class="line">        print &quot;the classifier came back with:%d,the real answer is :%d&quot; %(classifierResult,classNumStr)</span><br><span class="line">        if(classifierResult != classNumStr): errorCount +=1.0</span><br><span class="line">    print &quot;\nthe total number of errors is :%d&quot; % errorCount</span><br><span class="line">    print &quot;\nthe total error rate is:%f&quot; % (errorCount/float(mTest))</span><br></pre></td></tr></table></figure>
+
+
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/github.io/2018/07/13/00DateManage(%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86)/OKR%E5%B7%A5%E4%BD%9C%E6%B3%95/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  OKR工作法
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-02%E5%86%B3%E7%AD%96%E6%A0%91ID3/">
+                【机器学习实战】-02决策树ID3
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: '',
+			appKey: '',
+			placeholder: '请输入评论',
+			avatar: 'retro',
+			recordIP: false
+		})
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">Paul.ll</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		决策树ID3 | 
+	 
+	Paul.ll
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/github.io/favicon.ico">
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "https://www.google.com/search?q=";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "wujun234.github.io";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/github.io/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/github.io/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<header id="header">
+    <a id="title" href="/github.io/" class="logo">Paul.ll</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+	
+
+	
+
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00DateManage(时间管理)
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/github.io/2018/07/13/00DateManage(%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86)/OKR%E5%B7%A5%E4%BD%9C%E6%B3%95/">
+										OKR工作法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02MachineLearning(机器学习)
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-01KNN%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/">
+										【机器学习实战】-01KNN近邻算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-02%E5%86%B3%E7%AD%96%E6%A0%91ID3/">
+										【机器学习实战】-02决策树ID3
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05Version(版本管理)
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/github.io/2016/03/20/05Version(%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86)/GitABC/">
+										GitABC
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06ReadWrite(读书写作)
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/github.io/2018/01/10/06ReadWrite(%E8%AF%BB%E4%B9%A6%E5%86%99%E4%BD%9C)/20180110Markdown%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%85%A5%E9%97%A8/">
+										20180110Markdown介绍及入门
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	【机器学习实战】-02决策树ID3
+</h1>
+<div class="article-meta">
+	
+	<span>Paul.ll</span>
+	<span>2018-07-13 18:36:02</span>
+		<div id="article-categories">
+    
+		<span>Categories：</span>
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true">
+                        <a href="/categories/02MachineLearning-机器学习/">02MachineLearning(机器学习)</a>
+                        </i>
+                      
+                    </span>
+                
+            
+    
+
+    
+		<span>Tags：</span>
+            
+    
+		</div>
+
+</div>
+
+<div id="article-content">
+	<p>【博客的主要内容主要是自己的学习笔记，并结合个人的理解，供各位在学习过程中参考，若有疑问，欢迎提出；若有侵权，请告知博主删除，原创文章转载还请注明出处。】</p>
+<h1 id="1-什么是决策树"><a href="#1-什么是决策树" class="headerlink" title="1.什么是决策树"></a>1.什么是决策树</h1><p><strong>决策树</strong>是一种决策支持工具，通过使用树型图方式（可以是二叉树或非二叉树）展示尽可能的结果。</p>
+<p>##1.1 决策规则<br>决策树是线性决策，其每个非叶节点表示一个特征属性上的判断，叶节点表示出现的结果。</p>
+<p>决策树的决策过程（即每个分支）是从决策树的根节点开始，待测数据与决策树中的特征节点进行比较，并按照比较结果选择下一个比较节点，直到叶节点作为最终的决策结果。可以表示为：<br><strong>If 条件1 and 条件2 and 条件3 then 结果</strong></p>
+<p>##1.2决策树绘制</p>
+<ul>
+<li>决策节点：使用矩形框表示；     </li>
+<li>机会节点：使用圆圈表示；  </li>
+<li>终结点：使用三角形表示。</li>
+</ul>
+<p>##1.3决策树的经典算法<br>    ID3、C4.5、CART</p>
+<h1 id="2-决策树的建立"><a href="#2-决策树的建立" class="headerlink" title="2. 决策树的建立"></a>2. 决策树的建立</h1><ul>
+<li>特征选择：从训练数据的特征中选择一个特征作为当前节点的分裂标准</li>
+<li>决策树生成：依据选择特征标准，从上至下递归生成子节点，直到数据集不可再分则停止。</li>
+<li>剪枝：决策树易过拟合，需要通过剪枝来缩小树的结构和规模。</li>
+</ul>
+<h1 id="3-决策树-ID3算法"><a href="#3-决策树-ID3算法" class="headerlink" title="3. 决策树-ID3算法"></a>3. 决策树-ID3算法</h1><h2 id="3-1-特征选择"><a href="#3-1-特征选择" class="headerlink" title="3.1 特征选择"></a>3.1 特征选择</h2><p><strong>决策树的目标</strong>是将数据集按对应类标签进行分类。通过特征的选择将不同类别的数据集“赋予”对应的标签。特征选择的目标使得分类后的数据更佳“有序”。如何衡量一个数据集“有序”程度（或称纯度），通过数据纯度函数来判断，这里介绍两种纯度函数：</p>
+<dl><dt>1.0 信息增益（information gain)</dt><dd><strong>信息熵(entropy)</strong> 表示信息的期望（即不确定程度）。当选择某个特征对数据集进行分类，划分前后数据集信息熵的差值表示为<strong>信息增益</strong>。信息增益衡量某个特征对分类结果的影响大小。<br>假设：训练数据集为D，数据类别数为c。在构建决策树时，根据某个特征对数据集进行分类。在此，计算出该数据中的信息熵：</dd></dl><p>:    <strong>A.分类前的信息熵计算公式</strong><br>$$Infos(D) = -\sum_{i=1}^n p(i) log_2p(i)$$ Pi表示类别i样本数量占所有样本的比例。</p>
+<p>:    <strong>B.分类后的信息熵计算公式</strong><br>对应数据集D，选择特征A作为决策树判断节点时，在特征A作用后信息熵为Infosa(D)，其计算公式如下：<br>$$InfosA(D) = -\sum_{j=1}^k \frac {|Dj|} {|D|} * Infos(Dj) $$K表示顺联数据集D被划分为k个部分。</p>
+<p>:     <strong>C.数据集的信息增益</strong><br>信息增益表示数据集D在特征A的作用后，其信息熵减少的值，计算公式如下：<br>$$Gain(A)=Infos(D)−Infosa(D)$$</p>
+<dl><dt>2.0 基尼不纯度（Gini impurity)</dt><dd>从一个数据集中随机选取子项，度量其被错误分类到其它分组里的概率。</dd></dl><p>:     <strong>A.分类前信息熵计算公式</strong><br>$$Gini(D) = 1 - \sum_{i=1} ^ c  \left( pi \right)^2 $$c表示数据集中类别的数量；pi表示类别i样本数量所占样本比例。</p>
+<p>:     <strong>B.分类后信息熵计算公式</strong><br>$$GiniA(D) = \sum_{j=1} ^ k  \frac{|Dj|}{ |D| } Gini(Dj) $$</p>
+<p>:     <strong>C.数据集的信息增益</strong><br>$$∆Gini(A)=Ginia(D)−Gini(D)$$         </p>
+<p><strong>选择增益最大的特征作为该节点的分裂条件。</strong></p>
+<h2 id="3-2-剪枝"><a href="#3-2-剪枝" class="headerlink" title="3.2 剪枝"></a>3.2 剪枝</h2><p>在分类模型建立过程中，容易出现过拟合情况。</p>
+<p><strong>过拟合</strong>是指在模型学习训练中，训练样本精确度非常高，导致非训练样本的精确度的误差随着训练次数先下降后上升的现象。</p>
+<p>标准定义：给定一个假设空间H，一个假设h属于H，如果存在其他的假设h’属于H,使得在训练样例上h的错误率比h’小，但在整个实例分布上h’比h的错误率小，那么就说假设h过度拟合训练数据。 —-《Machine Learning》Tom M.Mitchell</p>
+<dl><dt>决策树的拟合现象通过“剪枝”技术做一定的修复。<strong>“剪枝”分为“预剪枝”和“后剪枝”</strong>。</dt><dd><strong>预剪枝</strong>：在决策树创建过程中，算法中加入一定的限制条件来终止树的生长，以避免过拟合度。通常的方法，信息增益小于一定阀值的请示后通过剪枝使决策树停止生长。阀值设置不当导致模型拟合不足和过拟合情况。</dd></dl><p>:     <strong>后剪枝</strong>：在决策树生长之后，按照自下而上的方式进行修剪决策树。通常两种方式：一种用新的叶节点来替换分支；另一种用最常使用分支来替换。</p>
+<h2 id="3-3-优点和缺点"><a href="#3-3-优点和缺点" class="headerlink" title="3.3 优点和缺点"></a>3.3 优点和缺点</h2><p><strong>优点</strong>：计算复杂度不高，输出结构易于理解，对中间值的缺失不敏感，可以处理不相关特征数据。<br><strong>缺点</strong>：可能会产生过度匹配问题。</p>
+<h1 id="4-决策树-ID3算法实现：基于python-和-numpy"><a href="#4-决策树-ID3算法实现：基于python-和-numpy" class="headerlink" title="4. 决策树-ID3算法实现：基于python 和 numpy"></a>4. 决策树-ID3算法实现：基于python 和 numpy</h1><p>示例：<br><img src="http://img.blog.csdn.net/20160621130335078" alt="这里写图片描述"></p>
+<h2 id="4-1-算法伪代码"><a href="#4-1-算法伪代码" class="headerlink" title="4.1 算法伪代码"></a>4.1 算法伪代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CreateBranch()</span><br><span class="line">	检测数据集中的每个子项是否属于同一分类：</span><br><span class="line">	If so return 类标签</span><br><span class="line">	Else</span><br><span class="line">		寻找划分数据集的最好特征</span><br><span class="line">		划分数据集</span><br><span class="line">		创建分支节点</span><br><span class="line">		For 每个划分的子集</span><br><span class="line">			调用函数createBranch并增加返回结果到分支节点中</span><br><span class="line">	Return 分支节点</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-算法实现"><a href="#4-2-算法实现" class="headerlink" title="4.2 算法实现"></a>4.2 算法实现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">Created on Sat Jun 18 16:50:40 2016</span><br><span class="line">@author: Paul.lu</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">from math import log</span><br><span class="line">import operator</span><br><span class="line"></span><br><span class="line">#创建样本数据集和标签</span><br><span class="line">def createDataSet():</span><br><span class="line">    dataSet = [[1,1,&#x27;yes&#x27;],</span><br><span class="line">        [1,1,&#x27;yes&#x27;],</span><br><span class="line">        [1,0,&#x27;no&#x27;],</span><br><span class="line">        [0,1,&#x27;no&#x27;],</span><br><span class="line">        [0,1,&#x27;no&#x27;]]</span><br><span class="line">    labels = [&#x27;no surfacing&#x27;,&#x27;flippers&#x27;]</span><br><span class="line">    return dataSet,labels</span><br><span class="line">    </span><br><span class="line">dataSet,labels = createDataSet()</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">#说明：计算特征值的熵</span><br><span class="line">#返回：熵值</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">def calcShannonEnt(dataSet):</span><br><span class="line">    numEntries = len(dataSet)</span><br><span class="line">    labelCounts = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    for featVec in dataSet:</span><br><span class="line">        currentLabel = featVec[-1]</span><br><span class="line">        if currentLabel not in labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] = 0</span><br><span class="line">        labelCounts[currentLabel] += 1</span><br><span class="line">        </span><br><span class="line">    #计算“熵”</span><br><span class="line">    shannonEnt = 0.0</span><br><span class="line">    for key in labelCounts:</span><br><span class="line">        prob = float(labelCounts[key]) / numEntries</span><br><span class="line">        shannonEnt -= prob * log(prob,2)</span><br><span class="line">    return shannonEnt</span><br><span class="line"></span><br><span class="line">#shannonEnt = calcShannonEnt(dataSet)</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">#说明：划分数据集</span><br><span class="line">#splitDataSet(待划分的数据集，划分数据集的特征，特征的返回值)</span><br><span class="line">#返回：划分数据集</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">def splitDataSet(dataSet,axis,value):</span><br><span class="line">    retDataSet = []</span><br><span class="line">    for featVec in dataSet:</span><br><span class="line">        if featVec[axis] == value:</span><br><span class="line">            reducedFeatVec = featVec[:axis]</span><br><span class="line">            reducedFeatVec.extend(featVec[axis+1:])</span><br><span class="line">            retDataSet.append(reducedFeatVec)</span><br><span class="line">    return retDataSet</span><br><span class="line">    </span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">说明：选择最好的数据划分方式</span><br><span class="line">1、计算信息增益：Gain（A） = Info(D) - InfoA(D)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;       </span><br><span class="line">def chooseBestFeatureToSplit(dataSet):</span><br><span class="line">    #获得标签个数</span><br><span class="line">    numFeatures = len(dataSet[0]) - 1</span><br><span class="line">    </span><br><span class="line">    #计算“数据集拆分前信息熵”</span><br><span class="line">    baseEntropy = calcShannonEnt(dataSet)</span><br><span class="line">    </span><br><span class="line">    #计算“数据集拆分后信息熵”</span><br><span class="line">    bestInfoGain = 0.0; bestFeature = -1</span><br><span class="line">    for i in range(numFeatures):</span><br><span class="line">        featList = [example[i] for example in dataSet]</span><br><span class="line">        uniqueVals = set(featList)</span><br><span class="line">        newEntropy = 0.0</span><br><span class="line">    </span><br><span class="line">        for value in uniqueVals:</span><br><span class="line">            subDataSet = splitDataSet(dataSet,i,value)</span><br><span class="line">            prob = len(subDataSet) / float(len(dataSet))</span><br><span class="line">            newEntropy += prob * calcShannonEnt(subDataSet)</span><br><span class="line">            </span><br><span class="line">    #计算“信息增益”</span><br><span class="line">        infoGain = baseEntropy - newEntropy</span><br><span class="line">        </span><br><span class="line">    #获得“信息增益”最大值</span><br><span class="line">        if(infoGain &gt; bestInfoGain):</span><br><span class="line">            bestInfoGain = infoGain</span><br><span class="line">            bestFeature = i</span><br><span class="line">            </span><br><span class="line">    return bestFeature</span><br><span class="line"></span><br><span class="line">#chooseBestFeatureToSplit(dataSet)</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">#说明：如果数据集已经处理了所有属性，但是类标签依然不是唯一的，对该类叶子节点，通过多数表决来确定该叶子节点的分类。</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">def majorityCnt(classList):</span><br><span class="line">    classCount = &#123;&#125;</span><br><span class="line">    for vote in classList:</span><br><span class="line">        if vote not in classCount.keys(): classCount[vote] = 0</span><br><span class="line">        classCount[vote] += 1</span><br><span class="line">    sortedClassCount = sorted(classCount.iteritems(),key=operator.itemgetter(1),reverse=True)</span><br><span class="line">    return sortedClassCount</span><br><span class="line">    </span><br><span class="line">&#x27;&#x27;&#x27;    </span><br><span class="line">#创建决策树</span><br><span class="line">#输入：样本数据集、标签列表</span><br><span class="line">#返回：决策树</span><br><span class="line">#说明：</span><br><span class="line">1、递归终止条件：</span><br><span class="line">    程序遍历完所有划分数据集的属性，或者每个分支下的所有实例都具有相同的分类。</span><br><span class="line">    </span><br><span class="line">2、选择最好的数据集划分；</span><br><span class="line">    2.1 计算数据集划分前“信息熵”</span><br><span class="line">    2.2 计算数据集划分后“信息熵”</span><br><span class="line">    2.3 计算“信息增益” = Info(D) - Infoa(D)</span><br><span class="line">    2.4 获得最大的“信息增益”，以获得最好的数据划分。</span><br><span class="line">    </span><br><span class="line">3、遍历特征值，创建分支。</span><br><span class="line"></span><br><span class="line">返回数据集示例：</span><br><span class="line">最终返回数据集dict形式的数据：</span><br><span class="line">    &#123;&#x27;no surfacing&#x27;: &#123;0: &#x27;no&#x27;, 1: &#123;&#x27;flippers&#x27;: &#123;0: &#x27;no&#x27;, 1: &#x27;yes&#x27;&#125;&#125;&#125;&#125;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">def createTree(dataSet,labels):</span><br><span class="line">    classList = [example[-1] for example in dataSet]</span><br><span class="line">    &#x27;&#x27;&#x27;递归终止的条件：程序遍历完所有划分数据集的属性，或者每个分支下的所有实例都具有相同的分类。&#x27;&#x27;&#x27;</span><br><span class="line">    if classList.count(classList[0]) == len(classList):</span><br><span class="line">        return classList[0]</span><br><span class="line"></span><br><span class="line">    if len(dataSet[0]) == 1:</span><br><span class="line">        return majorityCnt(classList)</span><br><span class="line">    </span><br><span class="line">    &#x27;&#x27;&#x27;选择最好的数据集划分&#x27;&#x27;&#x27;</span><br><span class="line">    bestFeat = chooseBestFeatureToSplit(dataSet)</span><br><span class="line">    bestFeatLabel = labels[bestFeat]</span><br><span class="line">    </span><br><span class="line">    &#x27;&#x27;&#x27;对特征值进行遍历，创建分支&#x27;&#x27;&#x27;</span><br><span class="line">    myTree = &#123;bestFeatLabel:&#123;&#125;&#125;</span><br><span class="line">    del(labels[bestFeat])</span><br><span class="line">    featValues = [example[bestFeat] for example in dataSet]</span><br><span class="line">    uniqueVals = set(featValues)</span><br><span class="line">    </span><br><span class="line">    for value in uniqueVals:</span><br><span class="line">        subLabels = labels[:]</span><br><span class="line">        myTree[bestFeatLabel][value] = createTree(splitDataSet(dataSet,bestFeat,value),subLabels)</span><br><span class="line">        </span><br><span class="line">    return myTree</span><br><span class="line">    </span><br><span class="line">ct = createTree(dataSet,labels)</span><br><span class="line">print ct</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>【参考】</strong></p>
+<ul>
+<li>什么是决策树 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Decision_tree">https://en.wikipedia.org/wiki/Decision_tree</a></li>
+<li>决策树学习  <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Decision_tree_learning">https://en.wikipedia.org/wiki/Decision_tree_learning</a></li>
+<li>决策树算法介绍及应用 <a target="_blank" rel="noopener" href="http://www.ibm.com/developerworks/cn/analytics/library/ba-1507-decisiontree-algorithm/index.html">http://www.ibm.com/developerworks/cn/analytics/library/ba-1507-decisiontree-algorithm/index.html</a></li>
+</ul>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-01KNN%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  【机器学习实战】-01KNN近邻算法
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/github.io/2018/01/10/06ReadWrite(%E8%AF%BB%E4%B9%A6%E5%86%99%E4%BD%9C)/20180110Markdown%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%85%A5%E9%97%A8/">
+                20180110Markdown介绍及入门
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+	<div id="vcomments"></div>
+
+
+<script>
+	
+		// 评论
+		new Valine({
+			av: AV,
+			el: '#vcomments',
+			notify: false,
+			verify: false,
+			path: window.location.pathname,
+			appId: '',
+			appKey: '',
+			placeholder: '请输入评论',
+			avatar: 'retro',
+			recordIP: false
+		})
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">Paul.ll</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
