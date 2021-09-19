@@ -1,255 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	
-	<!-- title -->
-	
-	<title>
-	
-		Git学习笔记 | 
-	 
-	Paul.ll
-	</title>
-	
-	<!-- keywords,description -->
-	 
+  <meta charset="utf-8">
+  
+  <title>Git学习笔记 | Paul.ll</title>
+  <meta name="author" content="Paul.ll">
+  
+  <meta name="description" content="专用名词1.  workspace:工作区
+2.  Index / Stage :暂存区
+3.  Repository：仓库区（或本地仓库）
+4.  Remote：远程仓库
 
-	<!-- favicon -->
-	
-	<link rel="shortcut icon" href="/github.io/favicon.ico">
-	
+一、集中式和分布式集中式版本控制，即建立中央服务器，在中央服务器保管所有版本控制内容。若你需要对某个内容进行修改时，需从“中">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+  <meta property="og:title" content="Git学习笔记"/>
+  <meta property="og:site_name" content="Paul.ll"/>
 
-	<!-- search -->
-	<script>
-		var searchEngine = "https://www.google.com/search?q=";
-		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
-			searchEngine = "https://www.google.com/search?q=";
-		}
-		var homeHost = "qq17908.github.io";
-		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
-			homeHost = window.location.host;
-		}
-	</script>
+  
+    <meta property="og:image" content=""/>
+  
 
+  <link rel="shortcut icon" href="/github.io/favicon.png">
+  
+  
+<link rel="stylesheet" href="/github.io/css/style.css">
 
-	
-<link rel="stylesheet" href="/github.io/css/main.css">
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
 
-	
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
-
-	
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-
-
-	
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-
-	
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-	
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
-
-	
-<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
-
-	
-<script src="/github.io/js/main.js"></script>
-
-	
-		
-<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
-
-		
-<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
-
-	
-	
-		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	
 <meta name="generator" content="Hexo 5.4.0"></head>
 
+
 <body>
-	<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?3efe99c287df5a1d6f0d02d187e403c1";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-<header id="header">
-    <a id="title" href="/github.io/" class="logo">Paul.ll</a>
-
-	<ul id="menu">
-		<li class="menu-item">
-			<a href="/about" class="menu-item-link">ABOUT</a>
-		</li>
-	
-
-	
-
-		<li class="menu-item">
-			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
-				UidGenerator
-			</a>
-		</li>
-		<li class="menu-item">
-			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
-				<i class="fa fa-github fa-2x"></i>
-			</a>
-		</li>
-	</ul>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/github.io/">Paul.ll</a></h1>
+  <h2><a href="/github.io/">坚持是一种态度！</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/github.io/null">Home</a></li>
+    
+      <li><a href="/github.io/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
 </header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-05Version(版本管理)/GitABC" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-03-20T02:31:23.000Z"><a href="/github.io/2016/03/20/05Version(%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86)/GitABC/">2016-03-20</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Git学习笔记</h1>
+  
 
-	
-<div id="sidebar">
-	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
-	
-	<div id="site-toc">
-		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
-		<div id="tree">
-			
-
-			
-							<ul>
-								<li class="directory">
-									<a href="#" class="directory">
-										<i class="fa fa-plus-square-o"></i>
-										00DateManage(时间管理)
-									</a>
-									
-							<ul>
-								<li class="file">
-									<a href="/github.io/2018/07/13/00DateManage(%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86)/OKR%E5%B7%A5%E4%BD%9C%E6%B3%95/">
-										OKR工作法
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-								</li>
-								
-							</ul>
-			
-							<ul>
-								<li class="directory">
-									<a href="#" class="directory">
-										<i class="fa fa-plus-square-o"></i>
-										02MachineLearning(机器学习)
-									</a>
-									
-							<ul>
-								<li class="file">
-									<a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-01KNN%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/">
-										【机器学习实战】-01KNN近邻算法
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/github.io/2018/07/13/02MachineLearning(%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0)/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98%E3%80%91-02%E5%86%B3%E7%AD%96%E6%A0%91ID3/">
-										【机器学习实战】-02决策树ID3
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-								</li>
-								
-							</ul>
-			
-							<ul>
-								<li class="directory">
-									<a href="#" class="directory">
-										<i class="fa fa-plus-square-o"></i>
-										05Version(版本管理)
-									</a>
-									
-							<ul>
-								<li class="file active">
-									<a href="/github.io/2016/03/20/05Version(%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86)/GitABC/">
-										GitABC
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-								</li>
-								
-							</ul>
-			
-							<ul>
-								<li class="directory">
-									<a href="#" class="directory">
-										<i class="fa fa-plus-square-o"></i>
-										06ReadWrite(读书写作)
-									</a>
-									
-							<ul>
-								<li class="file">
-									<a href="/github.io/2018/01/10/06ReadWrite(%E8%AF%BB%E4%B9%A6%E5%86%99%E4%BD%9C)/20180110Markdown%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%85%A5%E9%97%A8/">
-										20180110Markdown介绍及入门
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-								</li>
-								
-							</ul>
-			
-		</div>
-	</div>
-</div>
-
-	<!-- 引入正文 -->
-	<div id="content">
-		<h1 id="article-title">
-
-	GitABC
-</h1>
-<div class="article-meta">
-	
-	<span>Paul.ll</span>
-	<span>2016-03-20 10:31:23</span>
-		<div id="article-categories">
-    
-		<span>Categories：</span>
-            
-                
-                    <span>
-                        <i class="fa fa-folder" aria-hidden="true">
-                        <a href="/categories/05Version-版本管理/">05Version(版本管理)</a>
-                        </i>
-                      
-                    </span>
-                
-            
-    
-
-    
-		<span>Tags：</span>
-            
-    
-		</div>
-
-</div>
-
-<div id="article-content">
-	<span id="more"></span>
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <span id="more"></span>
 
 <p><img src="/images/GitABC/dXQM4aU.png" alt="Git"></p>
 <h2 id="专用名词"><a href="#专用名词" class="headerlink" title="专用名词"></a><strong>专用名词</strong></h2><pre><code>1.  workspace:工作区
@@ -363,57 +181,123 @@ git stash list 查看封存的工作现场
 .gitignore文件本身需要放在版本库中
 </code></pre>
 
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/github.io/categories/05Version-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">05Version(版本管理)</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://qq17908/github.io/2016/03/20/05Version(%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86)/GitABC/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="qq17908/github.io">
+  </form>
 </div>
 
 
-    <div class="post-guide">
-        <div class="item left">
-            
-              <a href="/github.io/2018/01/10/06ReadWrite(%E8%AF%BB%E4%B9%A6%E5%86%99%E4%BD%9C)/20180110Markdown%E4%BB%8B%E7%BB%8D%E5%8F%8A%E5%85%A5%E9%97%A8/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  20180110Markdown介绍及入门
-              </a>
-            
-        </div>
-        <div class="item right">
-            
-        </div>
-    </div>
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/github.io/categories/00DateManage-%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/">00DateManage(时间管理)</a><small>1</small></li>
+  
+    <li><a href="/github.io/categories/02MachineLearning-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">02MachineLearning(机器学习)</a><small>2</small></li>
+  
+    <li><a href="/github.io/categories/05Version-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/">05Version(版本管理)</a><small>1</small></li>
+  
+    <li><a href="/github.io/categories/06ReadWrite-%E8%AF%BB%E4%B9%A6%E5%86%99%E4%BD%9C/">06ReadWrite(读书写作)</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 Paul.ll
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/github.io/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/github.io/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/github.io/js/gallery.js"></script>
 
 
 
+
+
+
+<link rel="stylesheet" href="/github.io/fancybox/jquery.fancybox.css">
+
+
+<script src="/github.io/fancybox/jquery.fancybox.pack.js"></script>
 
 <script>
-	
-	
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
-	</div>
-	<div id="footer">
-	<p>
-	©2019-<span id="footerYear"></span> 
-	<a href="/">Paul.ll</a> 
-	
-	
-		|
-		<span id="busuanzi_container_site_pv">
-			pv
-			<span id="busuanzi_value_site_pv"></span>
-		</span>
-		|
-		<span id="busuanzi_container_site_uv"> 
-			uv
-			<span id="busuanzi_value_site_uv"></span>
-		</span>
-	
-	<br>
-	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
-	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
-	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
-	</p>
-</div>
-<script type="text/javascript"> 
-	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
-</script>
-	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+
 </body>
 </html>
